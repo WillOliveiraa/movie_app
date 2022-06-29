@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "will_movie_app"
+		},
+		{
+			"path": "dependency_module"
+		},
+		{
+			"path": "will_design_system"
+		},
+		{
+			"path": "core_module"
+		}
+	],
+	"settings": {}
+}
