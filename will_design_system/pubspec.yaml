@@ -1,5 +1,6 @@
 name: will_design_system
 description: A new Flutter package project.
+publish_to: 'none'
 version: 0.0.1
 homepage:
 
@@ -10,6 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  dependency_module:
+    path: ../dependency_module 
+  core_module:
+    path: ../core_module
 
 dev_dependencies:
   flutter_test:
