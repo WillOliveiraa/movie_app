@@ -58,9 +58,7 @@ class CardMovies extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             // circle vote average
-                            CircleProgress(
-                              vote: vote,
-                            ),
+                            CircleProgress(vote: vote),
                             SizedBox(
                               width: Sizes.dp10(context),
                             ),
@@ -73,6 +71,7 @@ class CardMovies extends StatelessWidget {
                                     title,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
+                                      fontFamily: 'DancingScript',
                                       fontWeight: FontWeight.w600,
                                       fontSize: Sizes.dp16(context),
                                     ),

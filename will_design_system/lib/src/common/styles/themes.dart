@@ -4,7 +4,7 @@ import 'color_palettes.dart';
 
 class Themes {
   static ThemeData lightTheme = ThemeData(
-    fontFamily: 'IBMPlexSans',
+    fontFamily: 'DancingScript',
     backgroundColor: ColorPalettes.lightBG,
     primaryColor: ColorPalettes.lightPrimary,
     textSelectionTheme: TextSelectionThemeData(
@@ -22,7 +22,7 @@ class Themes {
   );
 
   static ThemeData darkTheme = ThemeData(
-    fontFamily: 'IBMPlexSans',
+    fontFamily: 'DancingScript',
     brightness: Brightness.dark,
     backgroundColor: ColorPalettes.darkBG,
     primaryColor: ColorPalettes.darkPrimary,

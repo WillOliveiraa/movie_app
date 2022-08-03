@@ -3,11 +3,11 @@ import 'package:dependency_module/dependency_module.dart';
 import 'package:will_movie_app/src/modules/movie/domain/repositories/movies_repository.dart';
 import 'package:will_movie_app/src/modules/movie/external/movie_datasource_impl.dart';
 import 'package:will_movie_app/src/modules/movie/presenter/pages/now_playing/ui/cubit/now_playing_cubit.dart';
+import 'package:will_movie_app/src/modules/movie/presenter/pages/now_playing/ui/now_playing_page.dart';
 
 import 'data/datasources/movie_datasource.dart';
 import 'data/repositories/movies_repository_impl.dart';
 import 'domain/usecases/get_movie_now_playing.dart';
-import 'presenter/pages/now_playing/ui/now_playing_page.dart';
 
 class MovieModule extends Module {
   @override
@@ -31,5 +31,6 @@ class MovieModule extends Module {
   List<ModularRoute> get routes => [
         ChildRoute(Modular.initialRoute,
             child: (context, args) => const NowPlayingPage()),
+        // child: (context, args) => const HomePage()),
       ];
 }
