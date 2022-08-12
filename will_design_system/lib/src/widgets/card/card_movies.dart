@@ -1,7 +1,8 @@
 import 'package:dependency_module/dependency_module.dart';
 import 'package:flutter/material.dart';
-import 'package:will_design_system/src/common/common.dart';
+import 'package:will_design_system/src/extension/extension.dart';
 
+import '../../utils/sizes.dart';
 import '../error/error.dart';
 import '../progress/progress.dart';
 
@@ -27,6 +28,7 @@ class CardMovies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Container(
       margin: EdgeInsets.all(Sizes.dp5(context)),
       child: InkWell(
@@ -70,18 +72,9 @@ class CardMovies extends StatelessWidget {
                                   Text(
                                     title,
                                     overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontFamily: 'DancingScript',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: Sizes.dp16(context),
-                                    ),
+                                    style: textTheme.displayLarge,
                                   ),
-                                  Text(
-                                    releaseDate,
-                                    style: TextStyle(
-                                      fontSize: Sizes.dp12(context),
-                                    ),
-                                  ),
+                                  Text(releaseDate, style: textTheme.bodySmall),
                                 ],
                               ),
                             )
@@ -105,6 +98,7 @@ class CardMovies extends StatelessWidget {
                         softWrap: true,
                         maxLines: 5,
                         overflow: TextOverflow.ellipsis,
+                        style: textTheme.bodySmall,
                       ),
                     ],
                   ),

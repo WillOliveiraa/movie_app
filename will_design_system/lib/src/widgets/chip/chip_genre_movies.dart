@@ -1,7 +1,7 @@
 import 'package:core_module/core_module.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/common.dart';
+import '../../styles/color_palettes.dart';
 
 class GenreChip extends StatelessWidget {
   final int id;
