@@ -4,10 +4,10 @@ import 'package:will_movie_app/src/modules/movie/domain/repositories/movies_repo
 import 'package:will_movie_app/src/modules/movie/external/movie_datasource_impl.dart';
 import 'package:will_movie_app/src/modules/movie/presenter/pages/now_playing/ui/cubit/now_playing_cubit.dart';
 
+import '../home/presenter/pages/home_page.dart';
 import 'data/datasources/movie_datasource.dart';
 import 'data/repositories/movies_repository_impl.dart';
 import 'domain/usecases/get_movie_now_playing.dart';
-import 'home/presenter/ui/home_page.dart';
 
 class MovieModule extends Module {
   @override

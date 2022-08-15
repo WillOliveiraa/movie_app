@@ -12,6 +12,7 @@ dependencies:
 
   # UI
   cached_network_image: ^3.2.1
+  styled_text: ^5.1.0
 
   # Structure
   dartz: ^0.10.1

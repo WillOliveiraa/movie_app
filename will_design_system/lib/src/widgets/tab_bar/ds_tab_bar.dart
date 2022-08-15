@@ -114,7 +114,7 @@ class _DSTabItem extends StatelessWidget {
         height: Sizes.dp8(context),
         margin: EdgeInsets.symmetric(horizontal: Sizes.dp10(context)),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Sizes.dp6(context)),
+          borderRadius: BorderRadius.circular(Sizes.dp8(context)),
           color: isSelected
               ? selectedColor ?? ColorPalettes.lightPrimary
               : ColorPalettes.transparent,
@@ -122,7 +122,7 @@ class _DSTabItem extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            borderRadius: BorderRadius.circular(Sizes.dp6(context)),
+            borderRadius: BorderRadius.circular(Sizes.dp8(context)),
             onTap: () => onTap?.call(),
             child: Padding(
               padding: EdgeInsets.all(Sizes.dp12(context)),
