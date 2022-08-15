@@ -2,7 +2,7 @@ import 'package:dependency_module/dependency_module.dart';
 import 'package:flutter/material.dart';
 import 'package:will_design_system/will_design_system.dart';
 
-import 'src/modules/movie/movie_module.dart';
+import 'src/modules/now_playing/now_playing_module.dart';
 
 void main() {
   runApp(ModularApp(module: MovieModule(), child: const MyApp()));
