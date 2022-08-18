@@ -1,6 +1,7 @@
+import 'package:core_module/core_module.dart';
+import 'package:dependency_module/dependency_module.dart';
 import 'package:flutter/material.dart';
-
-import '../../../will_design_system.dart';
+import 'package:will_design_system/will_design_system.dart';
 
 class DSTabBar extends StatefulWidget {
   final List<String> tabItems;
@@ -37,12 +38,22 @@ class DSTabBar extends StatefulWidget {
 }
 
 class _DSTabBarState extends State<DSTabBar> {
-  int _activePageIndex = 0;
+  late ItemScrollController itemScrollController;
+  late ItemPositionsListener itemPositionsListener;
+  late ValueNotifier<int> tabNotifier;
 
   @override
   void initState() {
     super.initState();
-    _activePageIndex = widget.initialTab ?? 0;
+    itemScrollController = ItemScrollController();
+    itemPositionsListener = ItemPositionsListener.create();
+    tabNotifier = ValueNotifier(widget.initialTab ?? 0);
+  }
+
+  @override
+  void dispose() {
+    tabNotifier.dispose();
+    super.dispose();
   }
 
   @override
@@ -51,34 +62,52 @@ class _DSTabBarState extends State<DSTabBar> {
       label: widget.semanticLabel,
       child: Container(
         margin: EdgeInsets.only(
-          bottom: widget.paddingBottom ?? Sizes.dp5(context),
-          top: widget.paddingTop ?? Sizes.dp5(context),
+          bottom: widget.paddingBottom ?? Spacing.x2.h,
+          top: widget.paddingTop ?? Spacing.x2.h,
         ),
         width: MediaQuery.of(context).size.width,
-        height: widget.height ?? Sizes.dp10(context),
-        child: ListView(
+        height: widget.height ?? Spacing.x5.h,
+        child: ScrollablePositionedList.builder(
           padding: EdgeInsets.only(
-            left: widget.paddingLeft ?? Sizes.dp5(context),
-            right: widget.paddingRight ?? Sizes.dp5(context),
+            left: widget.paddingLeft ?? Spacing.x2.w,
+            right: widget.paddingRight ?? Spacing.x2.w,
           ),
           scrollDirection: Axis.horizontal,
-          children: widget.tabItems.map(
-            (tab) {
-              final index = widget.tabItems.indexOf(tab);
+          itemCount: widget.tabItems.length,
+          itemScrollController: itemScrollController,
+          itemPositionsListener: itemPositionsListener,
+          itemBuilder: (context, index) {
+            final tab = widget.tabItems.elementAt(index);
 
-              return _DSTabItem(
-                onTap: () {
-                  widget.onTabChanged?.call(index);
-                  setState(() => _activePageIndex = index);
-                },
-                label: tab,
-                isSelected: _activePageIndex == index,
-                selectedColor: widget.selectedColor,
-                labelColor: widget.labelColor,
-                selectedLabelColor: widget.selectedLabelColor,
-              );
-            },
-          ).toList(),
+            return ValueListenableBuilder(
+              valueListenable: tabNotifier,
+              builder: (context, value, child) {
+                return _DSTabItem(
+                  onTap: () {
+                    final alignment = tabNotifier.value >= index ? 0.2 : 0.0;
+                    tabNotifier.value = index;
+
+                    itemScrollController.scrollTo(
+                      index: index,
+                      alignment: alignment,
+                      duration: const Duration(milliseconds: 600),
+                    );
+
+                    widget.onTabChanged?.call(index);
+                  },
+                  label: tab,
+                  height: widget.height ?? Spacing.x5.h,
+                  isSelected: tabNotifier.value == index,
+                  selectedColor: widget.selectedColor,
+                  labelColor: widget.labelColor,
+                  selectedLabelColor: widget.selectedLabelColor,
+                  margin: index < (widget.tabItems.length - 1)
+                      ? EdgeInsets.only(right: Spacing.x1.w)
+                      : null,
+                );
+              },
+            );
+          },
         ),
       ),
     );
@@ -92,14 +121,18 @@ class _DSTabItem extends StatelessWidget {
   final Color? selectedColor;
   final Color? labelColor;
   final Color? selectedLabelColor;
+  final EdgeInsetsGeometry? margin;
+  final double height;
 
   const _DSTabItem({
     required this.label,
     required this.isSelected,
+    required this.height,
     this.onTap,
     this.selectedColor,
     this.labelColor,
     this.selectedLabelColor,
+    this.margin,
   });
 
   @override
@@ -110,33 +143,36 @@ class _DSTabItem extends StatelessWidget {
       label: label,
       container: true,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 1000),
-        height: Sizes.dp8(context),
-        margin: EdgeInsets.symmetric(horizontal: Sizes.dp10(context)),
+        duration: const Duration(milliseconds: 300),
+        height: height,
+        margin: margin,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Sizes.dp8(context)),
+          borderRadius: BorderRadius.circular(Spacing.x1.r),
           color: isSelected
-              ? selectedColor ?? ColorPalettes.lightPrimary
-              : ColorPalettes.transparent,
+              ? selectedColor ?? AppColors.black
+              : AppColors.transparent,
         ),
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            borderRadius: BorderRadius.circular(Sizes.dp8(context)),
+            borderRadius: BorderRadius.circular(Spacing.x1.r),
             onTap: () => onTap?.call(),
             child: Padding(
-              padding: EdgeInsets.all(Sizes.dp12(context)),
+              padding: EdgeInsets.symmetric(
+                horizontal: Spacing.x1.w,
+                vertical: Spacing.x1.h,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  DSText(
                     label,
                     style: isSelected
                         ? textStyle.titleSmall?.copyWith(
-                            color: selectedLabelColor ?? ColorPalettes.white,
+                            color: selectedLabelColor ?? AppColors.white,
                           )
-                        : textStyle.bodySmall?.copyWith(
-                            color: labelColor ?? ColorPalettes.grey20),
+                        : textStyle.bodySmall
+                            ?.copyWith(color: labelColor ?? AppColors.grey20),
                   ),
                 ],
               ),

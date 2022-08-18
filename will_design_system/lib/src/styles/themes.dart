@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'color_palettes.dart';
+import 'app_colors.dart';
 
 class Themes {
   static const String fontFamily = 'IBMPlexSans';
 
   static ThemeData lightTheme = ThemeData(
     fontFamily: fontFamily,
-    backgroundColor: ColorPalettes.lightBG,
-    primaryColor: ColorPalettes.lightPrimary,
+    backgroundColor: AppColors.lightBG,
+    primaryColor: AppColors.lightPrimary,
     textSelectionTheme: TextSelectionThemeData(
-      cursorColor: ColorPalettes.lightAccent,
+      cursorColor: AppColors.lightAccent,
     ),
-    dividerColor: ColorPalettes.darkBG,
-    scaffoldBackgroundColor: ColorPalettes.lightBG,
+    dividerColor: AppColors.darkBG,
+    scaffoldBackgroundColor: AppColors.lightBG,
     appBarTheme: AppBarTheme(
       toolbarTextStyle: TextStyle(
-        color: ColorPalettes.darkBG,
+        color: AppColors.darkBG,
         fontSize: 18.0,
         fontWeight: FontWeight.bold,
       ),
@@ -27,17 +27,17 @@ class Themes {
   static ThemeData darkTheme = ThemeData(
     fontFamily: fontFamily,
     brightness: Brightness.dark,
-    backgroundColor: ColorPalettes.darkBG,
-    primaryColor: ColorPalettes.darkPrimary,
-    dividerColor: ColorPalettes.lightPrimary,
-    scaffoldBackgroundColor: ColorPalettes.darkBG,
+    backgroundColor: AppColors.darkBG,
+    primaryColor: AppColors.darkPrimary,
+    dividerColor: AppColors.lightPrimary,
+    scaffoldBackgroundColor: AppColors.darkBG,
     textSelectionTheme: TextSelectionThemeData(
-      cursorColor: ColorPalettes.darkAccent,
+      cursorColor: AppColors.darkAccent,
     ),
     appBarTheme: AppBarTheme(
-      color: ColorPalettes.darkPrimary,
+      color: AppColors.darkPrimary,
       toolbarTextStyle: TextStyle(
-        color: ColorPalettes.lightBG,
+        color: AppColors.lightBG,
         fontSize: 18.0,
         fontWeight: FontWeight.w700,
       ),
@@ -51,7 +51,7 @@ class Themes {
       fontSize: 20,
       fontWeight: FontWeight.w600,
       height: 1.2,
-      color: ColorPalettes.black,
+      color: AppColors.black,
     ),
     displayMedium: TextStyle(
       fontFamily: fontFamily,

@@ -1,1 +1,1 @@
-export './ds_tab_bar.dart';
+export 'ds_tab_bar.dart';

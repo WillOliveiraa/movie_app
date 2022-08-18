@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../../styles/color_palettes.dart';
+import '../../styles/app_colors.dart';
 import '../text/ds_text.dart';
 
 class DSCardMovie extends StatelessWidget {
@@ -90,7 +90,7 @@ class DSCardMovie extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.star_border,
-                                  color: ColorPalettes.yellow,
+                                  color: AppColors.yellow,
                                 ),
                                 DSText(
                                   subtitle ?? '',
@@ -123,11 +123,11 @@ class DSCardMovie extends StatelessWidget {
                     height: 30,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: ColorPalettes.white,
+                      color: AppColors.white,
                     ),
                     child: Icon(
                       Icons.play_circle,
-                      color: ColorPalettes.lightPrimary,
+                      color: AppColors.lightPrimary,
                       size: 20,
                     ),
                   ),

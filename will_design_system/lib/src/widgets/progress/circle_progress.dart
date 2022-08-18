@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../styles/color_palettes.dart';
+import '../../styles/app_colors.dart';
 import '../../spacings/sizes.dart';
 
 class CircleProgress extends StatelessWidget {
@@ -20,7 +20,7 @@ class CircleProgress extends StatelessWidget {
               width: Sizes.width(context) / 10,
               height: Sizes.width(context) / 10,
               decoration: BoxDecoration(
-                color: ColorPalettes.blueGrey,
+                color: AppColors.blueGrey,
                 borderRadius: BorderRadius.circular(
                   Sizes.dp20(context),
                 ),
@@ -34,11 +34,11 @@ class CircleProgress extends StatelessWidget {
               child: CircularProgressIndicator(
                 strokeWidth: 3.0,
                 valueColor: AlwaysStoppedAnimation<Color>(
-                  ColorPalettes.getColorCircleProgress(
+                  AppColors.getColorCircleProgress(
                     double.parse(vote),
                   ),
                 ),
-                backgroundColor: ColorPalettes.grey,
+                backgroundColor: AppColors.grey,
                 value: double.parse(vote) / 10.0,
               ),
             ),
@@ -53,7 +53,7 @@ class CircleProgress extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: Sizes.dp10(context),
-                    color: ColorPalettes.white,
+                    color: AppColors.white,
                   ),
                 ),
               ),

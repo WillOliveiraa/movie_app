@@ -27,16 +27,12 @@ class BottomIconBar extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: isSelectedPage
-                ? ColorPalettes.lightPrimary
-                : ColorPalettes.white,
+            color: isSelectedPage ? AppColors.lightPrimary : AppColors.white,
           ),
           DSText(
             title,
             style: textTheme.labelMedium?.copyWith(
-              color: isSelectedPage
-                  ? ColorPalettes.lightPrimary
-                  : ColorPalettes.white,
+              color: isSelectedPage ? AppColors.lightPrimary : AppColors.white,
             ),
           ),
         ],

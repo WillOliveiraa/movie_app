@@ -2,7 +2,7 @@ library color;
 
 import 'package:flutter/material.dart';
 
-class ColorPalettes {
+class AppColors {
   //Colors for theme
   static Color lightPrimary = const Color(0xffe43e07);
   static Color darkPrimary = const Color(0xff16161C);
@@ -33,11 +33,11 @@ class ColorPalettes {
   static Color transparent = const Color(0x00000000);
 
   static Color getColorCircleProgress(double s) {
-    var r = ColorPalettes.red;
+    var r = AppColors.red;
     if (s > 4.5 && s < 7) {
-      r = ColorPalettes.yellow;
+      r = AppColors.yellow;
     } else if (s >= 7) {
-      r = ColorPalettes.green;
+      r = AppColors.green;
     }
     return r;
   }

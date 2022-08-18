@@ -31,10 +31,10 @@ class _HomePageState extends State<HomePage> {
               child: NestedScrollView(
                 headerSliverBuilder: (context, innerBoxIsScrolled) => [
                   SliverAppBar(
-                    backgroundColor: ColorPalettes.black,
+                    backgroundColor: AppColors.black,
                     leading: DSIconButton(
                       AssetSvg.menu,
-                      color: ColorPalettes.white,
+                      color: AppColors.white,
                       width: 22,
                       height: 22,
                       onPressed: () {},
@@ -42,14 +42,14 @@ class _HomePageState extends State<HomePage> {
                     actions: [
                       DSIconButton(
                         AssetSvg.notifications,
-                        color: ColorPalettes.white,
+                        color: AppColors.white,
                         width: 22,
                         height: 22,
                         onPressed: () {},
                       ),
                       DSIconButton(
                         AssetSvg.moreHoriz,
-                        color: ColorPalettes.white,
+                        color: AppColors.white,
                         width: 22,
                         height: 22,
                         onPressed: () {},
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                                 const SizedBox(width: 20),
                                 DSIconButton(
                                   AssetSvg.search,
-                                  color: ColorPalettes.white,
+                                  color: AppColors.white,
                                   width: 26,
                                   height: 26,
                                   onPressed: () {},
@@ -151,7 +151,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      backgroundColor: ColorPalettes.black,
+      backgroundColor: AppColors.black,
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Column(
@@ -187,7 +187,7 @@ class HomeView extends StatelessWidget {
                     AssetSvg.moreHoriz,
                     width: 22,
                     height: 22,
-                    color: ColorPalettes.lightPrimary,
+                    color: AppColors.lightPrimary,
                   )
                 ],
               ),
@@ -231,7 +231,7 @@ class HomeView extends StatelessWidget {
                     AssetSvg.moreHoriz,
                     width: 22,
                     height: 22,
-                    color: ColorPalettes.lightPrimary,
+                    color: AppColors.lightPrimary,
                   )
                 ],
               ),
@@ -289,7 +289,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       height: height ?? maxExtent,
-      color: ColorPalettes.black,
+      color: AppColors.black,
       child: child,
     );
   }

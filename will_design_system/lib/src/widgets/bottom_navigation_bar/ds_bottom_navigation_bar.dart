@@ -1,7 +1,9 @@
 import 'dart:ui';
 
+import 'package:core_module/core_module.dart';
 import 'package:flutter/material.dart';
 
+import '../../spacings/spacing.dart';
 import 'bottom_icon_bar.dart';
 
 class DSBottomNavigationBar extends StatefulWidget {
@@ -26,15 +28,15 @@ class _DSBottomNavigationBarState extends State<DSBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 5,
-      right: 20,
-      left: 20,
+      bottom: Spacing.x1.h,
+      right: Spacing.x5.w,
+      left: Spacing.x5.w,
       child: Container(
-        height: 90,
+        height: 90.h,
         width: double.maxFinite,
-        padding: const EdgeInsets.all(5),
+        padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(26),
+          borderRadius: BorderRadius.circular(26.r),
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
             child: Row(

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:core_module/core_module.dart';
 import 'package:flutter/material.dart';
 
 import '../../../will_design_system.dart';
@@ -83,7 +84,7 @@ class _DSCarouselState extends State<DSCarousel> {
     if (itemCount == 0) return const SizedBox();
 
     return Container(
-      height: widget.height ?? 300,
+      height: widget.height ?? 300.h,
       width: double.infinity,
       margin: widget.margin,
       padding: widget.padding,
@@ -109,13 +110,13 @@ class _DSCarouselState extends State<DSCarousel> {
               },
             ),
             Positioned(
-              top: 20,
-              right: 20,
+              top: Spacing.x5.h,
+              right: Spacing.x5.w,
               child: SizedBox(
-                width: 50,
-                height: 25,
+                width: 50.w,
+                height: 25.h,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(26),
+                  borderRadius: BorderRadius.circular(26.r),
                   child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
                     child: Center(
@@ -139,24 +140,23 @@ class _DSCarouselState extends State<DSCarousel> {
     return Visibility(
       visible: widget.showDots,
       child: Positioned(
-        bottom: Sizes.dp4(context),
-        right: 0,
-        left: 0,
+        bottom: Spacing.x5.h,
+        right: Spacing.zero,
+        left: Spacing.zero,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
             itemCount,
             (index) => AnimatedContainer(
-              margin:
-                  index < itemCount ? const EdgeInsets.only(right: 5) : null,
+              margin: index < itemCount ? EdgeInsets.only(right: 5.w) : null,
               duration: const Duration(milliseconds: 300),
-              height: 6,
-              width: currentPage == index ? 20 : 6,
+              height: 6.h,
+              width: currentPage == index ? Spacing.x5.w : 6.w,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(24.r),
                 color: currentPage == index
                     ? Theme.of(context).colorScheme.primary
-                    : ColorPalettes.grey20,
+                    : AppColors.grey20,
               ),
             ),
           ),

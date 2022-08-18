@@ -1,4 +1,4 @@
-import 'package:dependency_module/dependency_module.dart' hide State;
+import 'package:dependency_module/dependency_module.dart';
 import 'package:flutter/material.dart';
 import 'package:will_design_system/will_design_system.dart';
 
