@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:core_module/core_module.dart';
 import 'package:flutter/material.dart';
 
+import '../../assets/asset_svg.dart';
 import '../../spacings/spacing.dart';
 import 'bottom_icon_bar.dart';
 
@@ -38,31 +39,31 @@ class _DSBottomNavigationBarState extends State<DSBottomNavigationBar> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(26.r),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+            filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 BottomIconBar(
                   title: 'Home',
-                  icon: Icons.home,
+                  icon: AssetSvg.home,
                   isSelectedPage: widget.currentPage == 0,
                   onTap: () => setState(() => widget.onPageChanged?.call(0)),
                 ),
                 BottomIconBar(
                   title: 'Live TV',
-                  icon: Icons.tv,
+                  icon: AssetSvg.monitor,
                   isSelectedPage: widget.currentPage == 1,
                   onTap: () => setState(() => widget.onPageChanged?.call(1)),
                 ),
                 BottomIconBar(
                   title: 'Movies',
-                  icon: Icons.play_circle_fill,
+                  icon: AssetSvg.playCircle,
                   isSelectedPage: widget.currentPage == 2,
                   onTap: () => setState(() => widget.onPageChanged?.call(2)),
                 ),
                 BottomIconBar(
                   title: 'Settings',
-                  icon: Icons.settings,
+                  icon: AssetSvg.settings,
                   isSelectedPage: widget.currentPage == 3,
                   onTap: () => setState(() => widget.onPageChanged?.call(3)),
                 ),

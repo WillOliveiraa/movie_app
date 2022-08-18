@@ -3,7 +3,7 @@ import 'package:will_design_system/will_design_system.dart';
 
 class BottomIconBar extends StatelessWidget {
   final String title;
-  final IconData icon;
+  final AssetSvg icon;
   final Function()? onTap;
   final bool isSelectedPage;
 
@@ -25,7 +25,7 @@ class BottomIconBar extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          DSIcon(
             icon,
             color: isSelectedPage ? AppColors.lightPrimary : AppColors.white,
           ),

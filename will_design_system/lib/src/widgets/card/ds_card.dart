@@ -9,6 +9,7 @@ class DSCard extends StatelessWidget {
   final BoxBorder? border;
   final List<BoxShadow>? boxShadow;
   final BorderRadiusGeometry? radius;
+  final Clip clipBehavior;
 
   const DSCard({
     super.key,
@@ -22,6 +23,7 @@ class DSCard extends StatelessWidget {
     this.border,
     this.boxShadow,
     this.radius,
+    this.clipBehavior = Clip.none,
   });
 
   @override
@@ -34,6 +36,7 @@ class DSCard extends StatelessWidget {
         width: width,
         height: height,
         alignment: Alignment.center,
+        clipBehavior: clipBehavior,
         decoration: BoxDecoration(
           color: color ?? Theme.of(context).backgroundColor,
           borderRadius: radius ?? BorderRadius.circular(26),

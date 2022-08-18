@@ -118,7 +118,7 @@ class _DSCarouselState extends State<DSCarousel> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(26.r),
                   child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                    filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
                     child: Center(
                       child: DSText(
                         '${currentPage + 1}/$itemCount',

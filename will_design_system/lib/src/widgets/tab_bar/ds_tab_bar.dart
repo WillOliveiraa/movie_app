@@ -69,8 +69,8 @@ class _DSTabBarState extends State<DSTabBar> {
         height: widget.height ?? Spacing.x5.h,
         child: ScrollablePositionedList.builder(
           padding: EdgeInsets.only(
-            left: widget.paddingLeft ?? Spacing.x2.w,
-            right: widget.paddingRight ?? Spacing.x2.w,
+            left: widget.paddingLeft ?? Spacing.x4.w,
+            right: widget.paddingRight ?? Spacing.x4.w,
           ),
           scrollDirection: Axis.horizontal,
           itemCount: widget.tabItems.length,
@@ -102,7 +102,7 @@ class _DSTabBarState extends State<DSTabBar> {
                   labelColor: widget.labelColor,
                   selectedLabelColor: widget.selectedLabelColor,
                   margin: index < (widget.tabItems.length - 1)
-                      ? EdgeInsets.only(right: Spacing.x1.w)
+                      ? EdgeInsets.only(right: Spacing.x4.w)
                       : null,
                 );
               },
@@ -146,10 +146,11 @@ class _DSTabItem extends StatelessWidget {
         duration: const Duration(milliseconds: 300),
         height: height,
         margin: margin,
+        padding: EdgeInsets.symmetric(horizontal: Spacing.x2.w),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Spacing.x1.r),
+          borderRadius: BorderRadius.circular(Spacing.x2.r),
           color: isSelected
-              ? selectedColor ?? AppColors.black
+              ? selectedColor ?? AppColors.lightPrimary
               : AppColors.transparent,
         ),
         child: Material(

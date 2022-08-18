@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:core_module/core_module.dart';
 import 'package:flutter/material.dart';
 import 'package:will_design_system/will_design_system.dart';
 
@@ -13,7 +14,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final pageController = PageController();
   final tabs = ['All', 'Action', 'Adventure', 'Fanny', 'Hollywood'];
-  int tabSelected = 0;
   int currentPage = 0;
 
   @override
@@ -33,25 +33,21 @@ class _HomePageState extends State<HomePage> {
                   SliverAppBar(
                     backgroundColor: AppColors.black,
                     leading: DSIconButton(
-                      AssetSvg.menu,
+                      AssetSvg.items,
                       color: AppColors.white,
-                      width: 22,
-                      height: 22,
                       onPressed: () {},
                     ),
                     actions: [
                       DSIconButton(
-                        AssetSvg.notifications,
+                        AssetSvg.notification,
                         color: AppColors.white,
-                        width: 22,
-                        height: 22,
+                        width: 22.w,
+                        height: 22.h,
                         onPressed: () {},
                       ),
                       DSIconButton(
                         AssetSvg.moreHoriz,
                         color: AppColors.white,
-                        width: 22,
-                        height: 22,
                         onPressed: () {},
                       ),
                     ],
@@ -76,8 +72,6 @@ class _HomePageState extends State<HomePage> {
                                 DSIconButton(
                                   AssetSvg.search,
                                   color: AppColors.white,
-                                  width: 26,
-                                  height: 26,
                                   onPressed: () {},
                                 ),
                               ],
@@ -89,10 +83,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   SliverPersistentHeader(
                     delegate: _SliverAppBarDelegate(
-                      DSTabBar(
-                        tabItems: tabs,
-                        onTabChanged: (index) {},
-                      ),
+                      DSTabBar(tabItems: tabs),
                     ),
                     pinned: true,
                   ),
@@ -160,20 +151,81 @@ class HomeView extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 16),
               data: images,
               autoPlay: false,
-              height: 215,
+              height: 215.h,
               itemBuilder: (context, index) {
-                return DSCard(
-                  padding: const EdgeInsets.all(0),
-                  margin: const EdgeInsets.only(left: 3, right: 3, bottom: 15),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(26),
-                    child: Image.network(
-                      images[index],
-                      fit: BoxFit.cover,
-                      width: double.maxFinite,
-                      height: double.maxFinite,
+                return Stack(
+                  children: [
+                    DSCard(
+                      padding: const EdgeInsets.all(0),
+                      margin:
+                          EdgeInsets.only(left: 3.w, right: 3.w, bottom: 15.h),
+                      clipBehavior: Clip.antiAlias,
+                      child: Image.network(
+                        images[index],
+                        fit: BoxFit.cover,
+                        width: double.maxFinite,
+                        height: double.maxFinite,
+                      ),
                     ),
-                  ),
+                    Positioned(
+                      left: Spacing.x5.w,
+                      bottom: Spacing.x8.h,
+                      child: Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              DSText(
+                                'Maleficent HD',
+                                style: textTheme.bodyLarge,
+                                margin: EdgeInsets.only(bottom: Spacing.x1.h),
+                              ),
+                              Row(
+                                children: [
+                                  DSIcon(
+                                    AssetSvg.star,
+                                    margin:
+                                        EdgeInsets.only(right: Spacing.x1.w),
+                                    color: AppColors.yellow,
+                                  ),
+                                  DSText(
+                                    '4.9',
+                                    style: textTheme.bodySmall,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      right: Spacing.x5.w,
+                      bottom: Spacing.x8.h,
+                      child: SizedBox(
+                        width: 54.w,
+                        height: 54.h,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30.r),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                            child: Container(
+                              margin: EdgeInsets.all(10.w),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColors.white,
+                              ),
+                              child: Icon(
+                                Icons.play_arrow,
+                                color: AppColors.lightPrimary,
+                                size: Spacing.x7.w,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 );
               },
             ),
@@ -185,16 +237,14 @@ class HomeView extends StatelessWidget {
                   DSText('Popular', style: textTheme.displayMedium),
                   DSIcon(
                     AssetSvg.moreHoriz,
-                    width: 22,
-                    height: 22,
                     color: AppColors.lightPrimary,
                   )
                 ],
               ),
             ),
             Container(
-              height: 200,
-              margin: const EdgeInsets.symmetric(horizontal: 16),
+              height: 200.h,
+              margin: EdgeInsets.symmetric(horizontal: Spacing.x4.w),
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -222,23 +272,22 @@ class HomeView extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              padding: EdgeInsets.symmetric(
+                  horizontal: Spacing.x4.w, vertical: Spacing.x5.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   DSText('You may like', style: textTheme.displayMedium),
                   DSIcon(
                     AssetSvg.moreHoriz,
-                    width: 22,
-                    height: 22,
                     color: AppColors.lightPrimary,
                   )
                 ],
               ),
             ),
             Container(
-              height: 200,
-              margin: const EdgeInsets.symmetric(horizontal: 16),
+              height: 200.h,
+              margin: EdgeInsets.symmetric(horizontal: Spacing.x4.w),
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -265,6 +314,7 @@ class HomeView extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: 100.h),
           ],
         ),
       ),
