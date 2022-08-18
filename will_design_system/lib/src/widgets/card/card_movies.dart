@@ -2,7 +2,7 @@ import 'package:dependency_module/dependency_module.dart';
 import 'package:flutter/material.dart';
 import 'package:will_design_system/src/extension/extension.dart';
 
-import '../../utils/sizes.dart';
+import '../../spacings/sizes.dart';
 import '../error/error.dart';
 import '../progress/progress.dart';
 
@@ -43,8 +43,8 @@ class CardMovies extends StatelessWidget {
                 height: Sizes.width(context) / 2,
                 child: CachedNetworkImage(
                   imageUrl: image.imageOriginal,
-                  placeholder: (context, url) => LoadingIndicator(),
-                  errorWidget: (context, url, error) => ErrorImage(),
+                  placeholder: (context, url) => const LoadingIndicator(),
+                  errorWidget: (context, url, error) => const ErrorImage(),
                 ),
               ),
               Expanded(
@@ -53,33 +53,31 @@ class CardMovies extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Container(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            // circle vote average
-                            CircleProgress(vote: vote),
-                            SizedBox(
-                              width: Sizes.dp10(context),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          // circle vote average
+                          CircleProgress(vote: vote),
+                          SizedBox(
+                            width: Sizes.dp10(context),
+                          ),
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  title,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: textTheme.displayLarge,
+                                ),
+                                Text(releaseDate, style: textTheme.bodySmall),
+                              ],
                             ),
-                            Expanded(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    title,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: textTheme.displayLarge,
-                                  ),
-                                  Text(releaseDate, style: textTheme.bodySmall),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                          )
+                        ],
                       ),
                       SizedBox(
                         height: Sizes.dp10(context),

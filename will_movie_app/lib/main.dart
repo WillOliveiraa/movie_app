@@ -1,3 +1,4 @@
+import 'package:core_module/core_module.dart';
 import 'package:dependency_module/dependency_module.dart';
 import 'package:flutter/material.dart';
 import 'package:will_design_system/will_design_system.dart';
@@ -5,7 +6,15 @@ import 'package:will_design_system/will_design_system.dart';
 import 'src/modules/now_playing/now_playing_module.dart';
 
 void main() {
-  runApp(ModularApp(module: MovieModule(), child: const MyApp()));
+  runApp(
+    ModularApp(
+      module: MovieModule(),
+      child: ScreenConfig(
+        ignoreDynamicSize: true,
+        builder: (context) => const MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

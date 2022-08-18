@@ -91,14 +91,7 @@ class _HomePageState extends State<HomePage> {
                     delegate: _SliverAppBarDelegate(
                       DSTabBar(
                         tabItems: tabs,
-                        onTabChanged: (index) {
-                          // pageController.animateToPage(
-                          //   index,
-                          //   duration: const Duration(milliseconds: 500),
-                          //   curve: Curves.fastOutSlowIn,
-                          // );
-                          // setState(() => tabSelected = index);
-                        },
+                        onTabChanged: (index) {},
                       ),
                     ),
                     pinned: true,
@@ -283,6 +276,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   final Widget child;
   final double? height;
 
+  // ignore: unused_element
   _SliverAppBarDelegate(this.child, {this.height});
 
   @override

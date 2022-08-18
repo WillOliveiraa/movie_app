@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../styles/color_palettes.dart';
-import '../../utils/sizes.dart';
+import '../../spacings/sizes.dart';
 
 class CircleProgress extends StatelessWidget {
   final String vote;
